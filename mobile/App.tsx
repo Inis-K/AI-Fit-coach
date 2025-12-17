@@ -12,7 +12,7 @@ import {
 import { Picker } from '@react-native-picker/picker';
 import { StatusBar } from 'expo-status-bar';
 
-const API_BASE = 'http://localhost:5000/api';
+const API_BASE = 'https://ai-fit-coach.onrender.com/api';
 
 type WorkoutBlock = {
   title: string;
