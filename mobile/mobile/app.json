@@ -1,0 +1,15 @@
+{
+  "expo": {
+    "name": "AI Fit Coach",
+    "slug": "ai-coach-mobile",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "platforms": ["ios", "android"],
+    "ios": {
+      "bundleIdentifier": "com.inisk.aicoachmobile"
+    },
+    "android": {
+      "package": "com.inisk.aicoachmobile"
+    }
+  }
+}
