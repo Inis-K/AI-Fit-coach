@@ -2,14 +2,14 @@ name: EAS Build (iOS Production)
 
 on:
   workflow_dispatch:
-  
+
 jobs:
   build:
     runs-on: ubuntu-latest
 
     defaults:
       run:
-        working-directory: mobile   # 👈 VIKTIGASTE RADEN
+        working-directory: mobile/mobile
 
     steps:
       - name: Checkout repository
@@ -23,7 +23,7 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Install Expo CLI
+      - name: Install Expo & EAS
         run: npm install -g expo-cli eas-cli
 
       - name: Run EAS build
