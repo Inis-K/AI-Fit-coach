@@ -1,4 +1,4 @@
-name: EAS Build (iOS)
+name: EAS Build (iOS Production)
 
 on:
   workflow_dispatch:
@@ -7,8 +7,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    defaults:
+      run:
+        working-directory: mobile   # 👈 VIKTIGASTE RADEN
+
     steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Setup Node
@@ -16,16 +20,13 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install dependencies (mobile)
-        working-directory: mobile
-        run: npm ci || npm install
+      - name: Install dependencies
+        run: npm install
 
-      - name: Setup EAS
-        uses: expo/expo-github-action@v8
-        with:
-          eas-version: latest
-          token: ${{ secrets.EXPO_TOKEN }}
+      - name: Install Expo CLI
+        run: npm install -g expo-cli eas-cli
 
-      - name: EAS build iOS (production)
-        working-directory: mobile
+      - name: Run EAS build
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
         run: eas build --platform ios --profile production --non-interactive
